@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать пост</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+</head>
+<body>
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">  <!-- Не забудьте добавить enctype -->
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }} <!-- Отображение метки поля -->
+                    {{ field }} <!-- Отображение самого поля -->
+                    {% if field.help_text %} <!-- Проверка на наличие текста помощи -->
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            
+            <button type="submit" class="btn btn-primary btn-block">Опубликовать</button>
+        </form>
+
+        <a href="{% url 'profile' %}" class="btn btn-secondary btn-block mt-3">Назад к профилю</a> <!-- Ссылка для возврата на профиль -->
+    </div>
+
+    <!-- Подключение Bootstrap JS и его зависимостей -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

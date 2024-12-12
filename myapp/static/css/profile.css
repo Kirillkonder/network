@@ -1,0 +1,127 @@
+body {
+    background-color: #121212; /* Темный фон */
+    background-image: url('path/to/your/star-background.png'); /* Фоновое изображение звезд */
+    background-size: cover; /* Заполнение фона */
+    background-attachment: fixed; /* Фон фиксируется при прокрутке */
+}
+
+h1, h2 {
+    color: #ffffff; /* Белый цвет заголовков */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Легкая тень для заголовков */
+}
+
+.card {
+    border-radius: 15px; /* Закругленные углы карточек */
+    background-color: rgba(30, 30, 30, 0.8); /* Полупрозрачный фон для карточек */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Глубокая тень для карточек */
+}
+
+.btn {
+    margin-bottom: 10px; /* Отступы между кнопками */
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон для кнопок */
+    color: #ffffff; /* Белый цвет текста кнопок */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Закругленные углы кнопок */
+    transition: background-color 0.3s, transform 0.3s; /* Плавный переход цвета фона и эффекта нажатия */
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Эффект при наведении */
+    transform: scale(1.05); /* Увеличение кнопки при наведении */
+}
+
+.list-group-item {
+    border-radius: 50px; /* Закругленные углы у элементов списка */
+    transition: background-color 0.3s, transform 0.3s; /* Плавный переход цвета фона и эффекта при наведении */
+    background-color: rgba(50, 50, 50, 0.8); /* Полупрозрачный фон для элементов списка */
+}
+
+.list-group-item:hover {
+    background-color: rgba(70, 70, 70, 0.9); /* Цвет фона при наведении на элемент списка */
+    transform: translateY(-2px); /* Легкий подъем элемента при наведении */
+}
+
+.small-image {
+    max-width: 100%; /* Максимальная ширина 100% от родительского элемента */
+    height: auto; /* Высота автоматически для сохранения пропорций */
+    border-radius: 10px; /* Закругленные углы изображений */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Глубокая тень для изображений */
+}
+
+.post-title a {
+    font-weight: bold; /* Жирный шрифт для заголовков постов */
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #ffffff; /* Белый цвет текста заголовков постов */
+}
+
+
+.post-title {
+    text-align: center; /* Центрирование заголовка поста */
+    font-size: 1.2rem; /* Размер шрифта заголовка */
+    margin-bottom: 10px; /* Отступ снизу для заголовка */
+}
+
+.post-item {
+    width: 220px; /* Увеличенная ширина для лучшего восприятия */
+    margin: 5px; /* Отступ между карточками */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование элементов внутри карточки */
+}
+
+.list-group-item.post-card {
+    background-color: #343a40; /* Цвет фона */
+    color: #ffffff; /* Цвет текста */
+    border: 1px solid #6c757d; /* Цвет границы */
+    border-radius: 0.5rem; /* Увеличенный радиус границы для более мягкого вида */
+    padding: 20px; /* Увеличенные отступы внутри карточки */
+    height: 100%; /* Высота карточки занимает всю доступную высоту */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для глубины */
+    transition: transform 0.2s; /* Плавный эффект при наведении */
+}
+
+
+.small-image {
+    max-height: 120px; /* Увеличенная максимальная высота изображения */
+    width: 100%; /* Ширина изображения 100% для адаптивности */
+    object-fit: cover; /* Обрезка изображения по размеру */
+    border-radius: 0.25rem; /* Радиус границы для изображения */
+    margin-bottom: 10px; /* Отступ снизу для изображения */
+}
+
+.card {
+    border-radius: 10px; /* Уменьшение закругления углов */
+    padding: 10px; /* Уменьшение внутреннего отступа */
+}
+
+.btn {
+    margin: 0; /* Убираем отступы между кнопками */
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход для фона и цвета текста */
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Эффект при наведении */
+}
+
+.text-light {
+    font-weight: bold; /* Жирный шрифт для имени пользователя */
+}
+
+
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #007bff; /* Цвет иконки */
+    font-size: 1.5em; /* Размер иконки */
+    margin-left: 10px; /* Отступ от текста */
+    transition: color 0.3s, transform 0.2s; /* Плавный переход цвета и эффекта нажатия */
+}
+
+.icon-button:hover {
+    color: #0056b3; /* Цвет при наведении */
+    transform: scale(1.1); /* Увеличение размера при наведении */
+}
+
+

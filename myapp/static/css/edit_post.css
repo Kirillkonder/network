@@ -1,0 +1,65 @@
+body {
+    background-color: #000000; /* Черный фон */
+    font-family: 'Arial', sans-serif; /* Шрифт */
+}
+
+.container {
+    max-width: 600px; /* Максимальная ширина контейнера */
+    margin: 50px auto; /* Центрирование контейнера */
+    background-color: #333333; /* Темный фон для контейнера */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Более выраженная тень */
+    padding: 30px; /* Отступы внутри контейнера */
+}
+
+h1 {
+    color: #ffffff; /* Белый цвет заголовка */
+    text-align: center; /* Центрирование заголовка */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Отступ между группами полей */
+}
+
+.form-label {
+    display: block; /* Метки занимают всю ширину */
+    margin-bottom: 5px; /* Отступ снизу метки */
+    font-weight: bold; /* Жирный текст для меток */
+    color: #ffffff; /* Белый цвет меток */
+}
+
+.form-control, .form-control-file {
+    width: 100%; /* Ширина полей на 100% */
+    padding: 10px; /* Отступы внутри полей */
+    border: 1px solid #555555; /* Темный цвет границы */
+    border-radius: 4px; /* Закругленные углы */
+    background-color: #444444; /* Темный фон для полей */
+    color: #ffffff; /* Белый текст в полях */
+    transition: border-color 0.3s; /* Плавный переход цвета границы */
+}
+
+.form-control:focus, .form-control-file:focus {
+    border-color: #007bff; /* Цвет границы при фокусе */
+    outline: none; /* Убираем стандартное выделение */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Цвет кнопки */
+    border: none; /* Убираем границу */
+    border-radius: 4px; /* Закругленные углы кнопки */
+    color: #ffffff; /* Белый текст на кнопке */
+    padding: 10px 15px; /* Отступы внутри кнопки */
+    cursor: pointer; /* Курсор при наведении на кнопку */
+    transition: background-color 0.3s; /* Плавный переход цвета фона кнопки */
+    width: 100%; /* Ширина кнопки на 100% */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Цвет кнопки при наведении */
+}
+
+.text-danger {
+    color: red; /* Красный цвет для ошибок */
+    text-align: center; /* Центрирование текста ошибки */
+}

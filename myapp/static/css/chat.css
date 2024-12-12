@@ -1,0 +1,58 @@
+/* chat.css */
+
+/* Общие стили для чата */
+body {
+    background-color: #f8f9fa; /* Светлый фон для страницы */
+}
+
+h1 {
+    text-align: center; /* Центрируем заголовок */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+#messages {
+    max-height: 400px; /* Максимальная высота блока сообщений */
+    overflow-y: auto; /* Прокрутка по вертикали */
+    border: 1px solid #dee2e6; /* Граница вокруг блока сообщений */
+    padding: 10px; /* Отступ внутри блока сообщений */
+    background-color: white; /* Фон для блока сообщений */
+    border-radius: 5px; /* Скругление углов */
+}
+
+textarea {
+    width: 100%; /* Ширина текстовой области */
+    height: 80px; /* Высота текстовой области */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+button {
+    width: 100%; /* Кнопка на всю ширину */
+}
+
+/* Стили для новых сообщений */
+p {
+    margin: 5px 0; /* Отступы для параграфов сообщений */
+}
+
+.message-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.message {
+    max-width: 70%; /* Максимальная ширина сообщения */
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.message.sender {
+    background-color: #007bff; /* Цвет фона для отправленных сообщений */
+    align-self: flex-end; /* Выравнивание вправо */
+}
+
+.message.receiver {
+    background-color: #6c757d; /* Цвет фона для полученных сообщений */
+    align-self: flex-start; /* Выравнивание влево */
+}

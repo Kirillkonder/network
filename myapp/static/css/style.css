@@ -1,0 +1,87 @@
+body {
+    background-color: #121212; /* Темный фон */
+    color: #e0e0e0; /* Светлый текст */
+}
+.navbar {
+    background-color: #1f1f1f; /* Темный фон для navbar */
+}
+.navbar.scrolled {
+    background-color: #343a40; /* Цвет фона для navbar при прокрутке */
+}
+.card {
+    background-color: #1f1f1f; /* Темный фон для карточек */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* Скрываем переполнение */
+}
+.card-img-top {
+    width: 100%; /* Ширина изображения 100% */
+    height: 200px; /* Фиксированная высота изображений */
+    object-fit: cover; /* Обеспечиваем обрезку изображения по размеру */
+}
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+footer {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    padding: 20px 0;
+    text-align: center;
+}
+.navbar-brand, .nav-link {
+    color: #e0e0e0; /* Светлый цвет для текста навигации */
+}
+.navbar-brand:hover, .nav-link:hover {
+    color: #ffffff; /* Белый цвет при наведении */
+}
+.profile-btn {
+    background-color: #343a40; /* Темный цвет кнопки профиля */
+    color: white;
+    border-radius: 50%; /* Круглая кнопка */
+    width: 50px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    display: flex; /* Центрируем текст */
+    align-items: center; /* Центрируем текст по вертикали */
+    justify-content: center; /* Центрируем текст по горизонтали */
+    transition: background-color 0.3s ease;
+}
+.profile-btn:hover {
+    background-color: #495057; /* Цвет кнопки при наведении */
+}
+.search-form input {
+    transition: width 0.4s ease;
+    width: 200px; /* Начальная ширина */
+}
+.search-form input:focus {
+    width: 300px; /* Ширина при фокусе */
+    outline: none; /* Убираем обводку */
+}
+
+/* Новые стили для карточек */
+.card-deck {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет переносить элементы на новую строку */
+    justify-content: space-between; /* Распределяет пространство между карточками */
+}
+
+.card-container {
+    flex: 1 1 calc(33.333% - 10px); /* Три карточки в строке с отступом */
+    margin-bottom: 20px; /* Отступ снизу для карточек */
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        flex: 1 1 calc(50% - 10px); /* Две карточки в строке на меньших экранах */
+    }
+}
+
+@media (max-width: 576px) {
+    .card-container {
+        flex: 1 1 100%; /* Одна карточка в строке на самых маленьких экранах */
+    }
+}

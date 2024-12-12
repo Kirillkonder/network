@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .message-user1 {
+            background-color: #d1e7dd; /* Цвет для первого пользователя */
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        
+        .message-user2 {
+            background-color: #f8d7da; /* Цвет для второго пользователя */
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        #messages {
+            max-height: 400px; /* Ограничиваем высоту области сообщений */
+            overflow-y: auto; /* Добавляем прокрутку по вертикали */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h1 class="text-center">Chat with {{ other_user.username }}</h1>
+    
+        <div id="messages" class="mb-4">
+            {% for message in messages %}
+                <div class="message {% if message.sender.username == request.user.username %}message-user1{% else %}message-user2{% endif %}">
+                    <strong>{{ message.sender.username }}:</strong> {{ message.content }}
+                </div>
+            {% endfor %}
+        </div>
+    
+        <form id="message-form" method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" name="message" id="message-input" class="form-control" placeholder="Введите сообщение..." required>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Отправить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+<script>
+$(document).ready(function() {
+    // Функция для прокрутки к последнему сообщению
+    function scrollToBottom() {
+        var messagesDiv = $('#messages');
+        messagesDiv.scrollTop(messagesDiv[0].scrollHeight);
+    }
+
+    // Прокручиваем к последнему сообщению при загрузке страницы
+    scrollToBottom();
+
+    $('#message-form').on('submit', function(event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+        $.ajax({
+            type: 'POST',
+            url: '', // URL для отправки запроса (оставьте пустым для текущего URL)
+            data: $(this).serialize(), // Собираем данные формы
+            success: function(response) {
+                // Добавляем новое сообщение в div с сообщениями
+                var messageClass = (response.username === '{{ request.user.username }}') ? 'message-user1' : 'message-user2';
+                $('#messages').append('<div class="message ' + messageClass + '"><strong>' + response.username + ':</strong> ' + response.content + '</div>');
+                $('#message-input').val(''); // Очищаем поле ввода
+                
+                // Прокручиваем к последнему сообщению после добавления нового
+                scrollToBottom();
+            },
+            error: function(xhr, status, error) {
+                console.error('Ошибка при отправке сообщения:', error);
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

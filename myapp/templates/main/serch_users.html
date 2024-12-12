@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск пользователей</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Поиск пользователей</h1>
+        <form action="{% url 'search_users' %}" method="GET" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Введите имя пользователя..." value="{{ query }}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Поиск</button>
+                </div>
+            </div>
+        </form>
+
+        <h2>Результаты поиска:</h2>
+        <ul class="list-group">
+            {% for user in users %}
+                <li class="list-group-item"><a href="{% url 'profile_with_id'  user.id %}">{{ user.nickname }}</a></li>
+            {% empty %}
+                <li class="list-group-item">Пользователи не найдены.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Подключение Bootstrap JS и jQuery (необязательно, если не используете JS компоненты) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

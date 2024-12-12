@@ -1,0 +1,47 @@
+body {
+    background-color: #1e1e2f; /* Темный фон для космического стиля */
+}
+
+h1, h2 {
+    color: #ffffff; /* Белый цвет заголовков */
+}
+
+.post-image img {
+    border-radius: 10px; /* Закругление углов для изображений */
+}
+
+.btn {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1); /* Увеличение кнопки при наведении */
+}
+
+.form-control {
+    border-radius: 5px; /* Закругление углов полей ввода */
+    border: 1px solid #666; /* Серый цвет рамки */
+    background-color: #2c2c3e; /* Темный фон для полей ввода */
+    color: #ffffff; /* Светлый текст в полях ввода */
+}
+
+.form-control::placeholder {
+    color: #999; /* Цвет плейсхолдера */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Цвет рамки при фокусе */
+    outline: none; /* Убираем стандартное обводка при фокусе */
+}
+
+.list-group-item {
+    background-color: #2c2c3e; /* Темный фон для комментариев */
+    color: #ffffff; /* Светлый текст для комментариев */
+}
+
+.smaller-image {
+    max-width: 300px; /* Установите максимальную ширину изображения */
+    height: auto; /* Сохраняйте пропорции изображения */
+    border-radius: 10px; /* Закругление углов изображения */
+}
+

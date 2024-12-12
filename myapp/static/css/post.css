@@ -1,0 +1,25 @@
+body {
+    background: linear-gradient(to bottom, #000428, #004e92); /* Градиент от темного к светлому синему */
+    color: white;
+}
+.container {
+    margin-top: 100px;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    max-width: 400px; /* Устанавливаем максимальную ширину контейнера */
+    margin-left: auto; /* Центрируем контейнер по горизонтали */
+    margin-right: auto; /* Центрируем контейнер по горизонтали */
+}
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.btn {
+    background-color: #007bff;
+    border: none;
+}
+.btn:hover {
+    background-color: #0056b3;
+}

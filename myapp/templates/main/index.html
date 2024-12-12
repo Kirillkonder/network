@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Cat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="{% url 'index' %}">Network Cat</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                       <a href="{% url 'profile' %}" class="btn profile-btn mx-2">{{ user.nickname|slice:":1"|upper }}</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-primary btn-lg mx-2">Войти</a>
+                    {% endif %}
+                </li>
+                <!-- Форма поиска пользователей -->
+                <li class="nav-item">
+                    <form action="{% url 'search_users' %}" method="GET" class="form-inline search-form">
+                        <input type="text" name="q" class="form-control mr-2" placeholder="Поиск пользователей..." value="{{ request.GET.q }}">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Поиск</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-5 text-center">
+        <!-- Изображение морды кошки перемещено сюда -->
+        <div class="mb-4">
+            <img src="{% static 'images/cat.png' %}" alt="Морда кошки" class="img-fluid rounded-circle" style="max-width: 150px;">
+        </div>
+
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-md-4 mb-4">
+                    <div class="card fade-in">
+                        {% if post.image %}
+                            <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'post_detail' post.id %}" style="color: #ffffff;">{{ post.title }}</a></h5>
+                            <p class="card-text">{{ post.content|truncatewords:30 }}</p> <!-- Ограничиваем количество слов -->
+                            <p class="text-muted">Автор: <a href="{% url 'profile_with_id' post.author.id %}" style="color: #e0e0e0;">{{ post.author }}</a> | Дата: {{ post.created_at }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>Нет доступных постов.</p>
+            {% endfor %}    
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Добавление класса к navbar при прокрутке
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
+

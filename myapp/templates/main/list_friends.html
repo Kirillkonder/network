@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список друзей</title>
+    <!-- Подключение Bootstrap CSS через CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Подключение вашего кастомного CSS -->
+    <link rel="stylesheet" href="{% static 'css/ls_friend.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">Список друзей</h1>
+
+        {% if friends_list %}
+            <ul class="list-group">
+                {% for friendship in friends_list %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="{% url 'profile_with_id' friendship.friend.id %}" class="text-decoration-none text-dark">
+                            <strong class="username" >{{ friendship.friend.username }}</strong>
+                        </a>
+                        <div>
+                            <form action="{% url 'remove_friend' friendship.friend.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm delete-button">Удалить</button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="alert alert-warning mt-3" role="alert">
+                У вас нет друзей.
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Подключение jQuery через CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Подключение Bootstrap JS через CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    
+  
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Находим все кнопки "Удалить"
+            const deleteButtons = document.querySelectorAll('.delete-button');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    // Предотвращаем отправку формы по умолчанию
+                    event.preventDefault();
+
+                    // Показываем окно подтверждения
+                    const confirmation = confirm("Вы уверены, что хотите удалить этого друга?");
+
+                    if (confirmation) {
+                        // Если пользователь подтвердил, отправляем форму
+                        this.closest('form').submit();
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
